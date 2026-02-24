@@ -1,0 +1,12 @@
+[project]
+name = "geminitelegrambot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "hammett",
+]
+
+[tool.uv.sources]
+hammett = { git = "https://github.com/cusdeb-com/hammett.git", rev = "release1" }
