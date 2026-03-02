@@ -1,15 +1,17 @@
 from google import genai
 from config import config_obj
 
+class GeminiClient:
+    def __init__(self, api_key: str, model_name: str = "gemini-3-flash-preview"):
+        self.client = genai.Client(api_key=api_key)
+        self.model_name = model_name
 
-client = genai.Client(api_key=config_obj.gemini_api_key)
+    def generate(self, prompt: str) -> str:
+        response = self.client.models.generate_content(
+            model=self.model_name,
+            contents=prompt
+        )
+        return response.text
 
 
-def generate_content(
-        prompt: str,
-):
-    response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=prompt
-    )
-
-    return response.text
+ai_generate = GeminiClient(config_obj.API_KEY)
