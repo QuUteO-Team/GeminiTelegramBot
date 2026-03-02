@@ -14,4 +14,4 @@ class GeminiClient:
         return response.text
 
 
-ai_generate = GeminiClient(config_obj.API_KEY)
+ai_generate = GeminiClient(config_obj.GEMINI_API_KEY)
