@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.133.0",
+    "gemini-client>=1.0.0",
     "google-genai>=1.64.0",
     "hammett",
 ]
