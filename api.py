@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from gemini_client import generate_content
+from gemini_client import ai_generate
 
 app = FastAPI()
 
@@ -7,7 +7,7 @@ app = FastAPI()
 def send_prompt(
         prompt: str
 ):
-    answer = generate_content(prompt)
+    answer = ai_generate(prompt)
 
     return {"answer": answer}
 
