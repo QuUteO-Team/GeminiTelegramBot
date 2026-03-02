@@ -9,6 +9,9 @@ dependencies = [
     "gemini-client>=1.0.0",
     "google-genai>=1.64.0",
     "hammett",
+    "httpx>=0.28.1",
+    "python-dotenv>=1.2.2",
+    "uvicorn>=0.41.0",
 ]
 
 [tool.uv.sources]
