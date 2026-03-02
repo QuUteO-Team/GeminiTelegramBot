@@ -7,7 +7,7 @@ app = FastAPI()
 def send_prompt(
         prompt: str
 ):
-    answer = ai_generate(prompt)
+    answer = ai_generate.generate(prompt)
 
     return {"answer": answer}
 
