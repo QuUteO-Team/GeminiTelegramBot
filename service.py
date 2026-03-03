@@ -5,9 +5,12 @@ class Gemini_Service:
         self.BACKEND_URL = BACKEND_URL
 
     async def send_prompt(self, prompt: str) -> str:
-        async with httpx.AsyncClient(timeout=60.0) as client:
+        async with httpx.AsyncClient(timeout=10.0) as client:
             try:
-                response = await client.post(self.BACKEND_URL, data={"prompt": prompt})
+                response = await client.post(
+                    self.BACKEND_URL,
+                    json={"prompt": prompt},
+                )
                 response.raise_for_status()
 
                 data = response.json()

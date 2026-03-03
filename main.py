@@ -1,7 +1,7 @@
 from hammett.core import Bot
 from hammett.core.constants import DEFAULT_STATE
 
-from screens import MainMenuScreen, PaymentScreen, MenuVersionsScreen
+from screens import MainMenuScreen, PaymentScreen, MenuVersionsScreen, GeminiLiteScreen
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
         name,
         entry_point=MainMenuScreen,
         states={
-            DEFAULT_STATE: {MainMenuScreen, PaymentScreen, MenuVersionsScreen},
+            DEFAULT_STATE: {MainMenuScreen, PaymentScreen, MenuVersionsScreen, GeminiLiteScreen},
         },
     )
     app.run()
