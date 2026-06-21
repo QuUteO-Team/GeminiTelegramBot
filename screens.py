@@ -59,31 +59,23 @@ class GeminiLiteScreen(Screen):
     async def get_description(self, update, context):
         if context.user_data.get('gemini_response'):
             return context.user_data['gemini_response']
-
         return '🚀 Напишите ваш вопрос, и я отправлю его в Gemini Lite!'
 
     @register_typing_handler
     async def handle_text_input(self, update, context):
         user_text = update.message.text
+        user_id = update.effective_user.id  # Получаем ID пользователя
 
         gemini_service = Gemini_Service("http://127.0.0.1:8000/request")
 
-        answer = await gemini_service.send_prompt(user_text)
+        # Передаем user_id в сервис
+        answer = await gemini_service.send_prompt(user_id, user_text)
 
         context.user_data['gemini_response'] = answer
-
         return await self.jump(update, context)
 
     async def add_default_keyboard(self, update, context):
-        return [
-            [
-                Button(
-                    '⬅️ Назад в меню',
-                    MenuVersionsScreen,
-                    source_type=SourceTypes.MOVE_SOURCE_TYPE
-                )
-            ]
-        ]
+        return [[Button('⬅️ Назад в меню', MenuVersionsScreen, source_type=SourceTypes.MOVE_SOURCE_TYPE)]]
 
 
 class PaymentScreen(Screen):
